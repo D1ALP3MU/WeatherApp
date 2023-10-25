@@ -1,3 +1,4 @@
+const imgBackground =  document.querySelector('#background-img');
 const container =  document.querySelector('.container');
 const searchBox =  document.querySelector('.search-box button');
 const weatherBox =  document.querySelector('.weather-box');
@@ -37,6 +38,9 @@ async function queryApi() {
             weatherBox.classList.remove('active');
             weatherDetails.classList.remove('active');
             error404.classList.add('active');
+            imgBackground.style.background = "url('/assets/img/background2.jpg')"
+            imgBackground.style.backgroundSize = "cover"
+            imgBackground.style.backgroundPosition = "center"
             return;
         }
 
@@ -56,30 +60,51 @@ async function queryApi() {
             }, 5000);
 
             const { main: { temp, humidity }, wind: { speed }, weather: [ { main, icon, description } ] } = data;
-        
+            console.log(icon);
+            
             switch (main) {
                 case 'Clear':
                     image.src = "/assets/img/clear_1.png"
-                    console.log('Clear weather');
+                    imgBackground.style.background = "url('/assets/img/fondo-clear.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
                 case 'Rain':
                     image.src = '/assets/img/rain_1.png'
+                    imgBackground.style.background = "url('/assets/img/fondo-rain.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
                 case 'Snow':
                     image.src = '/assets/img/snow.png'
+                    imgBackground.style.background = "url('/assets/img/fondo-snow.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
                 case 'Clouds':
                     image.src = '/assets/img/cloud_1.png'
+                    imgBackground.style.background = "url('/assets/img/fondo-cloud.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
                 case 'Mist':
                     image.src = '/assets/img/mist_1.png'
+                    imgBackground.style.background = "url('/assets/img/fondo-mist.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
                 case 'Haze':
                     image.src = '/assets/img/mist_1.png'
+                    imgBackground.style.background = "url('/assets/img/fondo-haze.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
             
                 default:
                     image.src = '/assets/img/cloud_1.png.png'
+                    imgBackground.style.background = "url('/assets/img/background2.jpg')"
+                    imgBackground.style.backgroundSize = "cover"
+                    imgBackground.style.backgroundPosition = "center"
                     break;
             }
 
